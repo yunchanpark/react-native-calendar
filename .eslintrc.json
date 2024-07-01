@@ -1,16 +1,16 @@
 {
-  "root": true,
-  "extends": ["@react-native"],
-  "plugins": ["import", "prettier"],
-  "rules": {
-      "import/order": [
-          "error",
-          {
-              "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
-              "newlines-between": "always",
-              "alphabetize": { "order": "asc", "caseInsensitive": true }
-          }
-      ],
-      "prettier/prettier": "error"
-  }
+    "root": true,
+    "extends": ["@react-native"],
+    "plugins": ["import", "prettier"],
+    "rules": {
+        "import/order": [
+            "error",
+            {
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+                "newlines-between": "always",
+                "alphabetize": { "order": "asc", "caseInsensitive": true }
+            }
+        ],
+        "prettier/prettier": "error"
+    }
 }
