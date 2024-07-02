@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { useRef, useState } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import { Calendar, LocaleConfig, type MarkedDates } from 'react-native-calendar';
@@ -57,7 +58,7 @@ const MARKED_DATES: MarkedDates = {
 LocaleConfig('ko', localeMap.ko);
 
 export default function App() {
-    const today = useRef('2024-07-12');
+    const today = useRef(dayjs().format('YYYY-MM-DD')).current;
     const [locale, setLocale] = useState<Locale>('ko');
 
     const handleLocaleToggle = () => {
@@ -73,13 +74,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             <Button title="언어 토글" onPress={handleLocaleToggle} />
-            <Calendar
-                locale={locale}
-                date={today.current}
-                minDate="1997-01-01"
-                maxDate="2030-12-01"
-                markedDates={MARKED_DATES}
-            />
+            <Calendar locale={locale} date={today} minDate="1997-01-01" maxDate="2030-12-01" markedDates={MARKED_DATES} />
         </View>
     );
 }

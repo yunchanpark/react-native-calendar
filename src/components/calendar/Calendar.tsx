@@ -1,11 +1,10 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Day, Header, dayStyle, dotStyle, markingStyle } from '../../common';
 import { useCalendarHandler, useCalendarState } from '../../hooks';
-import { withCalendarProvider } from '../../providers';
 import type { DateType } from '../../types';
-import { dayjs, getMonthDaysArray } from '../../utilities';
+import { dayjs, getMonthDaysArray, typedMemo } from '../../utilities';
 
 import type { CalendarProps } from './types';
 
@@ -103,4 +102,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default memo(withCalendarProvider(Calendar));
+export default typedMemo(Calendar);

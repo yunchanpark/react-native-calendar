@@ -31,13 +31,3 @@ export function withCalendarProvider<Props extends {} = {}>(Component: React.Com
         </CalendarProvider>
     );
 }
-
-export function withCalendarProviderForwardRef<Ref = unknown, Props extends {} = {}>(
-    Component: React.ComponentType<Props>,
-): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & React.RefAttributes<Ref>> {
-    return React.forwardRef((props: Props, ref) => (
-        <CalendarProvider>
-            <Component {...props} ref={ref} />
-        </CalendarProvider>
-    ));
-}

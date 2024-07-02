@@ -9,15 +9,16 @@ export interface DayProps {
     date: DateType;
     markingStyle?: MarkingStyle;
     dotStyle?: DotStyle;
+    textColor?: string;
     onPress?(): void;
 }
 
-export default function Day({ date, markingStyle, dotStyle, onPress }: DayProps) {
+export default function Day({ date, markingStyle, dotStyle, textColor, onPress }: DayProps) {
     return (
         <Animated.View style={styles.wrapper}>
             <TouchableOpacity onPress={onPress} style={styles.dayContainer}>
                 <View style={[markingStyle, styles.circle, styles.markingBase]}>
-                    <Text>{date.date}</Text>
+                    <Text style={{ color: textColor }}>{date.date}</Text>
                 </View>
                 <View
                     style={[

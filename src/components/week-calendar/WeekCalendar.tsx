@@ -1,5 +1,5 @@
 import { FlashList, type ListRenderItem } from '@shopify/flash-list';
-import React, { useCallback, useEffect, useMemo, useRef, type ForwardedRef } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, type ForwardedRef } from 'react';
 import {
     StyleSheet,
     View,
@@ -11,25 +11,12 @@ import {
 } from 'react-native';
 import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 
-import { Day, Header, dayStyle, dotStyle, markingStyle, type HeaderProps } from '../../common';
+import { Day, Header, dayStyle, dotStyle, markingStyle } from '../../common';
 import { useCalendarHandler, useCalendarState } from '../../hooks';
-import { withCalendarProviderForwardRef } from '../../providers';
-import type { DateType, MarkedDates } from '../../types';
+import type { DateType } from '../../types';
 import { dayjs, getMonthWeeksArray } from '../../utilities';
 
-interface WeekCalendarProps extends Pick<HeaderProps, 'locale' | 'onPressLeft' | 'onPressRight'> {
-    date?: string;
-    minDate?: string;
-    maxDate?: string;
-    markedDates?: MarkedDates;
-    containerStyle?: {
-        width: number;
-    };
-    hideHeader?: boolean;
-    dayNames?: string[];
-    onChangePage?(index: number): void;
-    onPressDay?(dateString: string): void;
-}
+import type { WeekCalendarProps } from './types';
 
 function WeekCalendar(
     {
@@ -58,6 +45,7 @@ function WeekCalendar(
     const calendarState = useCalendarState();
     const initialIndex = calendarState.selectedWeekNumber - 1;
     const weekOfMonthArray = getMonthWeeksArray(calendarState.selectedDateString);
+    console.log(JSON.stringify(weekOfMonthArray, null, 2));
 
     // effects
     useEffect(() => {
@@ -98,12 +86,14 @@ function WeekCalendar(
                 <View style={itemWrapper}>
                     {item.map((dayInfo, index) => {
                         const isSameDay = calendarState.selectedDate.isSame(dayInfo.dayString, 'day');
+                        const isSameMonth = calendarState.selectedDate.isSame(dayInfo.dayString, 'month');
 
                         const currentDayjs = dayjs(dayInfo.dayString);
                         const isDisableMaxDay = calendarState.maxDate ? currentDayjs.isAfter(calendarState.maxDate) : false;
                         const isDisableMinDay = calendarState.minDate ? currentDayjs.isBefore(calendarState.minDate) : false;
                         const isDisableDay = isDisableMaxDay || isDisableMinDay;
 
+                        const textColor = isDisableDay ? '#BDBDBDFF' : isSameMonth ? '#111111' : '#BDBDBDFF';
                         const isDot = markedDates?.[dayInfo.dayString]?.marked;
 
                         return (
@@ -113,9 +103,11 @@ function WeekCalendar(
                                     date={dayInfo}
                                     markingStyle={isSameDay ? markingStyle : undefined}
                                     dotStyle={isDot ? dotStyle : undefined}
+                                    textColor={textColor}
                                     onPress={
                                         !isDisableDay
                                             ? () => {
+                                                  console.log(dayInfo.dayString);
                                                   onPressDay?.(dayInfo.dayString);
                                                   setDate(dayInfo.dayString);
                                               }
@@ -148,9 +140,9 @@ function WeekCalendar(
                 initialScrollIndex={initialIndex}
                 renderItem={renderItem}
                 estimatedItemSize={weekSize.width}
-                estimatedListSize={weekSize}
                 showsHorizontalScrollIndicator={false}
                 renderScrollComponent={ScrollView}
+                keyExtractor={(item, index) => item[0]?.dayString + index.toString()}
                 onMomentumScrollEnd={handleChangePage}
                 pagingEnabled
                 horizontal
@@ -168,4 +160,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default withCalendarProviderForwardRef<FlashList<DateType[]>, WeekCalendarProps>(WeekCalendar);
+export default forwardRef(WeekCalendar);
