@@ -1,10 +1,10 @@
-import dayjs, { type Dayjs } from 'dayjs';
+import type { Dayjs } from 'dayjs';
 import React, { useReducer, type PropsWithChildren } from 'react';
 
 import { CalendarsActionsContext, CalendarsStateContext } from '../contexts';
 import { calendarReducer } from '../reducer';
 import type { CalendarState } from '../types';
-import { getMonthWeekInfo } from '../utilities';
+import { dayjs, getMonthWeekInfo } from '../utilities';
 
 const initializeState = (initDay: Dayjs): CalendarState => ({
     selectedDate: initDay,
@@ -22,4 +22,22 @@ export default function CalendarProvider({ children }: PropsWithChildren) {
             <CalendarsStateContext.Provider value={state}>{children}</CalendarsStateContext.Provider>
         </CalendarsActionsContext.Provider>
     );
+}
+
+export function withCalendarProvider<Props extends {} = {}>(Component: React.ComponentType<Props>) {
+    return (props: Props) => (
+        <CalendarProvider>
+            <Component {...props} />
+        </CalendarProvider>
+    );
+}
+
+export function withCalendarProviderForwardRef<Ref = unknown, Props extends {} = {}>(
+    Component: React.ComponentType<Props>,
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & React.RefAttributes<Ref>> {
+    return React.forwardRef((props: Props, ref) => (
+        <CalendarProvider>
+            <Component {...props} ref={ref} />
+        </CalendarProvider>
+    ));
 }

@@ -1,6 +1,5 @@
 import { FlashList, type ListRenderItem } from '@shopify/flash-list';
-import dayjs from 'dayjs';
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef, type ForwardedRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, type ForwardedRef } from 'react';
 import {
     StyleSheet,
     View,
@@ -12,12 +11,13 @@ import {
 } from 'react-native';
 import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 
-import { Day, Header, dayStyle, dotStyle, markingStyle } from '../../common';
+import { Day, Header, dayStyle, dotStyle, markingStyle, type HeaderProps } from '../../common';
 import { useCalendarHandler, useCalendarState } from '../../hooks';
+import { withCalendarProviderForwardRef } from '../../providers';
 import type { DateType, MarkedDates } from '../../types';
-import { getMonthWeeksArray } from '../../utilities';
+import { dayjs, getMonthWeeksArray } from '../../utilities';
 
-interface WeekCalendarProps {
+interface WeekCalendarProps extends Pick<HeaderProps, 'locale' | 'onPressLeft' | 'onPressRight'> {
     date?: string;
     minDate?: string;
     maxDate?: string;
@@ -29,8 +29,6 @@ interface WeekCalendarProps {
     dayNames?: string[];
     onChangePage?(index: number): void;
     onPressDay?(dateString: string): void;
-    onPressLeft?(): void;
-    onPressRight?(): void;
 }
 
 function WeekCalendar(
@@ -38,9 +36,9 @@ function WeekCalendar(
         date,
         maxDate,
         minDate,
-        dayNames,
         markedDates,
         containerStyle,
+        locale,
         hideHeader,
         onChangePage,
         onPressDay,
@@ -143,7 +141,7 @@ function WeekCalendar(
 
     return (
         <GestureHandlerRootView style={weekWrapper}>
-            {!hideHeader && <Header dayNames={dayNames} onPressLeft={onPressLeft} onPressRight={onPressRight} />}
+            {!hideHeader && <Header locale={locale} onPressLeft={onPressLeft} onPressRight={onPressRight} />}
             <FlashList
                 ref={flashListRef}
                 data={weekOfMonthArray}
@@ -170,4 +168,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default forwardRef<FlashList<DateType[]>, WeekCalendarProps>(WeekCalendar);
+export default withCalendarProviderForwardRef<FlashList<DateType[]>, WeekCalendarProps>(WeekCalendar);

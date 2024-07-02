@@ -1,31 +1,22 @@
-import dayjs from 'dayjs';
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Day, Header, dayStyle, dotStyle, markingStyle, type HeaderProps } from '../../common';
+import { Day, Header, dayStyle, dotStyle, markingStyle } from '../../common';
 import { useCalendarHandler, useCalendarState } from '../../hooks';
-import type { DateType, MarkedDates } from '../../types';
-import { getMonthDaysArray } from '../../utilities';
+import { withCalendarProvider } from '../../providers';
+import type { DateType } from '../../types';
+import { dayjs, getMonthDaysArray } from '../../utilities';
 
-interface CalendarProps extends Pick<HeaderProps, 'onPressLeft' | 'onPressMonth' | 'onPressRight'> {
-    date?: string;
-    minDate?: string;
-    maxDate?: string;
-    markedDates?: MarkedDates;
-    hideHeader?: boolean;
-    dayNames?: string[] | undefined;
-    onPressDay?(dateString: string, index: number): void;
-    onPressLeft?(): void;
-    onPressRight?(): void;
-}
+import type { CalendarProps } from './types';
 
 function Calendar({
+    locale,
     date,
-    dayNames,
     maxDate,
     minDate,
     markedDates,
     hideHeader,
+    monthFormatTemplate,
     onPressDay,
     onPressLeft,
     onPressRight,
@@ -62,7 +53,8 @@ function Calendar({
             const isDisableMinDay = calendarState.minDate ? currentDayjs.isBefore(calendarState.minDate) : false;
             const isDisableDay = isDisableMaxDay || isDisableMinDay || !isSameMonth;
 
-            const isDot = markedDates?.[dayInfo.dayString]?.marked;
+            const markedDate = markedDates?.[dayInfo.dayString];
+            const isDot = markedDate?.marked;
 
             return isSameMonth ? (
                 <View key={dayInfo.dayString} style={dayStyle.wrapper}>
@@ -70,7 +62,7 @@ function Calendar({
                         key={dayInfo.dayString}
                         date={dayInfo}
                         markingStyle={isSameDay ? markingStyle : undefined}
-                        dotStyle={isDot ? dotStyle : undefined}
+                        dotStyle={isDot ? markedDate?.dotStyle ?? dotStyle : undefined}
                         onPress={
                             !isDisableDay
                                 ? () => {
@@ -90,7 +82,14 @@ function Calendar({
 
     return (
         <>
-            {!hideHeader && <Header dayNames={dayNames} onPressLeft={onPressLeft} onPressRight={onPressRight} />}
+            {!hideHeader && (
+                <Header
+                    locale={locale}
+                    onPressLeft={onPressLeft}
+                    onPressRight={onPressRight}
+                    monthFormatTemplate={monthFormatTemplate}
+                />
+            )}
             <View style={styles.wrapper}>{monthArray.map(renderDay)}</View>
         </>
     );
@@ -104,4 +103,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default memo(Calendar);
+export default memo(withCalendarProvider(Calendar));

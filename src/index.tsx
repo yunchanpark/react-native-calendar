@@ -1,3 +1,4 @@
-export function multiply(a: number, b: number): Promise<number> {
-    return Promise.resolve(a * b);
-}
+export * from './components';
+export * from './providers';
+export type { DateType, MarkedDates } from './types';
+export { LocaleConfig, LocaleUpdateConfig } from './utilities';

@@ -1,6 +1,8 @@
-import dayjs, { type Dayjs } from 'dayjs';
+import type { Dayjs } from 'dayjs';
 
 import type { DateType } from '../types';
+
+import dayjs from './dayjs-config';
 
 const WEEK_DAYS = 7;
 

@@ -1,7 +1,5 @@
-import dayjs from 'dayjs';
-
 import type { CalendarActions, CalendarState, InitDate } from '../types';
-import { getMonthWeekInfo } from '../utilities';
+import { dayjs, getMonthWeekInfo } from '../utilities';
 
 export default function calendarReducer(state: CalendarState, actions: CalendarActions): CalendarState {
     switch (actions.type) {

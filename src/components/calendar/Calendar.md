@@ -28,7 +28,7 @@ export default function CalendarPage() {
     return (
         <View style={styles.wrapper}>
             <CalendarProvider>
-                <Calendar date={today} minDate="1997-01-01" maxDate="2030-12-01" markedDates={MARKED_DATES} />
+                <Calendar date={today.current} minDate="1997-01-01" maxDate="2030-12-01" markedDates={MARKED_DATES} />
             </CalendarProvider>
         </View>
     );
@@ -70,10 +70,13 @@ interface CalendarProps {
      */
     hideHeader?: boolean;
     /**
-     * Array of day names
-     * @example [일, 월, 화, 수, 목, 금, 토]
+     * Get the formatted date according to the string of tokens passed in.
+     * To escape characters, wrap them in square brackets (e.g. [MM]).
+     * dayjs().format()// => current date in ISO8601, without fraction seconds e.g. '2020-04-02T08:02:17-05:00'
+     * dayjs('2019-01-25').format('[YYYYescape] YYYY-MM-DDTHH:mm:ssZ[Z]')// 'YYYYescape 2019-01-25T00:00:00-02:00Z'
+     * dayjs('2019-01-25').format('DD/MM/YYYY') // '25/01/2019'
      */
-    dayNames?: string[] | undefined;
+    monthFormatTemplate?: string;
     /**
      * Called when a day is pressed
      * @params

@@ -19,7 +19,16 @@ export default function Day({ date, markingStyle, dotStyle, onPress }: DayProps)
                 <View style={[markingStyle, styles.circle, styles.markingBase]}>
                     <Text>{date.date}</Text>
                 </View>
-                <View style={[styles.circle, dotStyle]} />
+                <View
+                    style={[
+                        styles.circle,
+                        {
+                            backgroundColor: dotStyle?.backgroundColor,
+                            width: dotStyle?.width ?? 5,
+                            height: dotStyle?.height ?? 5,
+                        },
+                    ]}
+                />
             </TouchableOpacity>
         </Animated.View>
     );
