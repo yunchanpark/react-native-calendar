@@ -1,7 +1,7 @@
 import type { FlashListProps } from '@shopify/flash-list';
 
 import type { HeaderProps } from '../../common';
-import type { MarkedDates } from '../../types/calendar';
+import type { MarkedDates } from '../../types';
 
 interface AgendaListActions {
     openCalendar(): void;

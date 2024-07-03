@@ -45,7 +45,6 @@ function WeekCalendar(
     const calendarState = useCalendarState();
     const initialIndex = calendarState.selectedWeekNumber - 1;
     const weekOfMonthArray = getMonthWeeksArray(calendarState.selectedDateString);
-    console.log(JSON.stringify(weekOfMonthArray, null, 2));
 
     // effects
     useEffect(() => {

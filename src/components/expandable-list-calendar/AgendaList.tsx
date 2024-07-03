@@ -9,8 +9,11 @@ import { typedMemo } from '../../utilities';
 import type { AgendaListProps, ContentData, TitleData } from './types';
 
 function AgendaList<TData>({ onScroll, openCalendar, closeCalendar, data, ...props }: AgendaListProps<TData>) {
+    // hooks
     const { selectedDateString } = useCalendarState();
     const { setDate } = useCalendarHandler();
+
+    // refs
     const viewingDate = useRef(selectedDateString);
     const isScrollStart = useRef(false);
     const startScrollY = useRef(0);
@@ -20,10 +23,23 @@ function AgendaList<TData>({ onScroll, openCalendar, closeCalendar, data, ...pro
         itemVisiblePercentThreshold: 50,
     }).current;
 
+    // flash-list initial scroll
     if (dayjs(selectedDateString).endOf('month').isSame(selectedDateString, 'day')) {
         agendaListRef.current?.scrollToIndex({ index: 0 });
     }
 
+    // effects
+    useEffect(() => {
+        if (viewingDate.current !== undefined && selectedDateString !== viewingDate.current) {
+            viewingDate.current = selectedDateString;
+            const findMoveIndex = data?.findIndex((item) => item.type === 'TITLE' && item.dateString === selectedDateString);
+            if (findMoveIndex !== undefined && findMoveIndex !== -1) {
+                agendaListRef.current?.scrollToIndex({ index: findMoveIndex, animated: true });
+            }
+        }
+    }, [data, selectedDateString]);
+
+    // functions
     const _handleScroll = useCallback(
         (event: NativeSyntheticEvent<NativeScrollEvent>) => {
             if (startScrollY.current === 0 && isScrollStart.current) {
@@ -54,16 +70,6 @@ function AgendaList<TData>({ onScroll, openCalendar, closeCalendar, data, ...pro
             }
         }
     }, 500);
-
-    useEffect(() => {
-        if (viewingDate.current !== undefined && selectedDateString !== viewingDate.current) {
-            viewingDate.current = selectedDateString;
-            const findMoveIndex = data?.findIndex((item) => item.type === 'TITLE' && item.dateString === selectedDateString);
-            if (findMoveIndex !== undefined && findMoveIndex !== -1) {
-                agendaListRef.current?.scrollToIndex({ index: findMoveIndex, animated: true });
-            }
-        }
-    }, [data, selectedDateString]);
 
     return (
         <FlashList

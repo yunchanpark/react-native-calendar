@@ -4,17 +4,17 @@ import { dayjs, getMonthWeekInfo } from '../utilities';
 export default function calendarReducer(state: CalendarState, actions: CalendarActions): CalendarState {
     switch (actions.type) {
         case 'SET_DATE':
-            return _setDate(state, actions.date);
+            return setDate(state, actions.date);
         case 'ADD_MONTH':
-            return _changeMonth(state, 1);
+            return changeMonth(state, 1);
         case 'SUB_MONTH':
-            return _changeMonth(state, -1);
+            return changeMonth(state, -1);
         case 'INIT_DATE':
-            return _initDate(state, { date: actions.date, maxDate: actions.maxDate, minDate: actions.minDate });
+            return initDate(state, { date: actions.date, maxDate: actions.maxDate, minDate: actions.minDate });
     }
 }
 
-function _changeMonth(state: CalendarState, months: number): CalendarState {
+function changeMonth(state: CalendarState, months: number): CalendarState {
     const newSelectedDate = dayjs(state.selectedDate).add(months, 'month').endOf('month');
     const selectedDate =
         months > 0
@@ -34,7 +34,7 @@ function _changeMonth(state: CalendarState, months: number): CalendarState {
     };
 }
 
-function _setDate(state: CalendarState, date: string): CalendarState {
+function setDate(state: CalendarState, date: string): CalendarState {
     const selectedDate = dayjs(date);
     const selectedDateString = selectedDate.format('YYYY-MM-DD');
 
@@ -46,7 +46,7 @@ function _setDate(state: CalendarState, date: string): CalendarState {
     };
 }
 
-function _initDate(state: CalendarState, { date, maxDate, minDate }: Omit<InitDate, 'type'>): CalendarState {
+function initDate(state: CalendarState, { date, maxDate, minDate }: Omit<InitDate, 'type'>): CalendarState {
     const selectedDate = dayjs(date);
     const selectedDateString = selectedDate.format('YYYY-MM-DD');
 
