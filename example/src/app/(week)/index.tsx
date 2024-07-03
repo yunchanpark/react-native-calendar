@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import { LocaleConfig, WeekCalendar, type MarkedDates } from 'react-native-calendar';
 

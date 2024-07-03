@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Text, View, type ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 

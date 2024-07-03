@@ -1,6 +1,6 @@
 import { FlashList, type ViewToken } from '@shopify/flash-list';
 import dayjs from 'dayjs';
-import React, { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import type { NativeScrollEvent, NativeSyntheticEvent, ViewabilityConfig } from 'react-native';
 
 import { useCalendarHandler, useCalendarState, useDebounce } from '../../hooks';

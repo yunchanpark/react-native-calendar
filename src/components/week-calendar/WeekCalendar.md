@@ -7,7 +7,6 @@
 
 ```tsx
 import dayjs from 'dayjs';
-import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WeekCalendar, CalendarProvider } from 'react-native-calendar';
 

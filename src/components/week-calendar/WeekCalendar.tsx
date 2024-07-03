@@ -1,5 +1,5 @@
 import { FlashList, type ListRenderItem } from '@shopify/flash-list';
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef, type ForwardedRef } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useRef, type ForwardedRef } from 'react';
 import {
     StyleSheet,
     View,

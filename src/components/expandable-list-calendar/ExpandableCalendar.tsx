@@ -1,5 +1,5 @@
 import type { FlashList } from '@shopify/flash-list';
-import React, { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { GestureDetector } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
@@ -113,6 +113,7 @@ export default function ExpandableCalendar<TData>({
 const styles = StyleSheet.create({
     wrapper: {
         position: 'relative',
+        overflow: 'hidden',
         flex: 1,
     },
     listWrapper: {

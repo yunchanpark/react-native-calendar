@@ -1,5 +1,5 @@
 import type { Dayjs } from 'dayjs';
-import React, { useReducer, type PropsWithChildren } from 'react';
+import { useReducer, type ComponentType, type PropsWithChildren } from 'react';
 
 import { CalendarsActionsContext, CalendarsStateContext } from '../contexts';
 import { calendarReducer } from '../reducer';
@@ -24,7 +24,7 @@ export default function CalendarProvider({ children }: PropsWithChildren) {
     );
 }
 
-export function withCalendarProvider<Props extends {} = {}>(Component: React.ComponentType<Props>) {
+export function withCalendarProvider<Props extends {} = {}>(Component: ComponentType<Props>) {
     return (props: Props) => (
         <CalendarProvider>
             <Component {...props} />
