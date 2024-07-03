@@ -16340,7 +16340,7 @@ __metadata:
     react-native: 0.74.2
     react-native-builder-bob: ^0.20.0
     react-native-gesture-handler: ^2.17.1
-    react-native-reanimated: 3.10.1
+    react-native-reanimated: 3.12.1
     release-it: ^15.0.0
     ts-jest: ^29.1.5
     typescript: ^5.2.2
@@ -16378,9 +16378,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:3.10.1":
-  version: 3.10.1
-  resolution: "react-native-reanimated@npm:3.10.1"
+"react-native-reanimated@npm:3.12.1":
+  version: 3.12.1
+  resolution: "react-native-reanimated@npm:3.12.1"
   dependencies:
     "@babel/plugin-transform-arrow-functions": ^7.0.0-0
     "@babel/plugin-transform-nullish-coalescing-operator": ^7.0.0-0
@@ -16394,7 +16394,7 @@ __metadata:
     "@babel/core": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: b41808a122799806a524601e75620c8d79ebf8a0127f57fe370412f90471560005f65df8549fd8c39e627c58141a921c849fec9d263f481f153f0ddc90e4a5b6
+  checksum: 91575b3a20a5878f42d0302cf304ed46ff35c12ce717018c0bfb6af047bf675f224ab95de778daae483b139e66c5290a661635c06304065879b02a5926243e1c
   languageName: node
   linkType: hard
 
