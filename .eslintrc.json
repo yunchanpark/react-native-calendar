@@ -11,6 +11,7 @@
                 "alphabetize": { "order": "asc", "caseInsensitive": true }
             }
         ],
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "react/react-in-jsx-scope": "off"
     }
 }

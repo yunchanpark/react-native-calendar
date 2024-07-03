@@ -1,31 +1,37 @@
-# react-native-calendar
+# `calendar`
 
-A highly customizable React Native calendar library offering a user-friendly UI and smooth animations.
+-   Provides weekly and monthly calendars
+-   Offers smooth gestures and animations
+-   Supports calendar marking functionality
+
+## Preview
+
+<p>
+  <img src="https://github.com/ReptalieRegion/react-native-monorepo/assets/96051437/d582a1aa-1544-46c1-bacf-c4f713e3269d" width="33%"/>
+  <img src="https://github.com/ReptalieRegion/react-native-monorepo/assets/96051437/e8868958-e8fe-4ae1-9c0a-b29b73ac36f9" width="33%" />
+  <img src="https://github.com/ReptalieRegion/react-native-monorepo/assets/96051437/6f8a3434-263c-4191-b809-696e5c41630f" width="33%" />
+</p>
 
 ## Installation
 
-```sh
-npm install react-native-calendar
+```
+yarn add react-native-calendar
 ```
 
-## Usage
+### Dependencies
 
-```js
-import { multiply } from 'react-native-calendar';
-
-// ...
-
-const result = await multiply(3, 7);
+```
+yarn add @shopify/flash-list dayjs react-native-gesture-handler react-native-reanimated
 ```
 
-## Contributing
+## Calendar
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+[Calendar Documentation](./src/components/calendar/Calendar.md)
 
-## License
+## WeekCalendar
 
-MIT
+[WeekCalendar Documentation](./src/components/week-calendar/WeekCalendar.md)
 
----
+## ExpandableCalendar
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+[ExpandableCalendar Documentation](./src/components/agenda-list-calendar/ExpandableCalendar.md)
