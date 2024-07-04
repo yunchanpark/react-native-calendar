@@ -34,4 +34,4 @@ yarn add @shopify/flash-list dayjs react-native-gesture-handler react-native-rea
 
 ## ExpandableCalendar
 
-[ExpandableCalendar Documentation](./src/components/agenda-list-calendar/ExpandableCalendar.md)
+[ExpandableCalendar Documentation](./src/components/expandable-list-calendar/ExpandableCalendar.md)
