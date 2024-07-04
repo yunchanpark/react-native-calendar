@@ -5,19 +5,25 @@ on:
         branches: [main, beta]
 
 jobs:
-    build:
+    release:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            - uses: ./.github/actions/setup
-            - name: Create Changesets Pull Request or Publish to NPM
-              id: changesets
-              uses: changesets/action@v1
-              with:
-                  title: 'chore: version packages'
-                  commit: 'chore: version packages'
-                  version: yarn changeset:version
-                  publish: yarn changeset:publish
+            - name: Checkout source code
+              uses: actions/checkout@v4
+            - name: Install the dependancies
+              uses: ./.github/actions/setup
+            - name: Initialise the NPM config
+              run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Initialize Git user
+              run: |
+                  git config --global user.email "yongp99@nate.com"
+                  git config --global user.name "Release Workflow"
+            - name: Log git status
+              run: git status
+            - name: Run release
+              run: yarn release --ci
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
