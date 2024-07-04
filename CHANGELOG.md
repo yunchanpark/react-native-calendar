@@ -1,5 +1,12 @@
 
 
+## 1.0.2 (2024-07-04)
+
+
+### Bug Fixes
+
+* Update CHANGELOG.md ([0f8dd38](https://github.com/yunchanpark/react-native-calendar/commit/0f8dd383da22f57f3bf253594021da38b34c2955))
+
 ## 1.0.1 (2024-07-04)
 
 
