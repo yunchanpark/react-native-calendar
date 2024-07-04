@@ -1,8 +1,8 @@
+import { ExpandableCalendar, LocaleConfig, type MarkedDates } from '@crawl-lab/react-native-calendar';
 import type { ContentStyle, ListRenderItem } from '@shopify/flash-list';
 import dayjs from 'dayjs';
 import { useMemo, useRef, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { ExpandableCalendar, LocaleConfig, type MarkedDates } from 'react-native-calendar';
 
 export type Title = {
     type: 'TITLE';
