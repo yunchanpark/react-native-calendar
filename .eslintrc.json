@@ -13,5 +13,6 @@
         ],
         "prettier/prettier": "error",
         "react/react-in-jsx-scope": "off"
-    }
+    },
+    "ignorePatterns": ["node_modules/*", "lib/*", "coverage/*"]
 }
