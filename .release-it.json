@@ -2,8 +2,8 @@
     "$schema": "https://unpkg.com/release-it@17/schema/release-it.json",
     "git": {
         "requireCleanWorkingDir": true,
-        "tagName": "${version}",
-        "commitMessage": "chore: release ${version}",
+        "tagName": "v${version}",
+        "commitMessage": "chore: release v${version}",
         "push": true
     },
     "hooks": {
@@ -12,12 +12,11 @@
         "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     },
     "npm": {
-        "publish": false
+        "publish": true
     },
     "github": {
         "release": true,
-        "releaseName": "Release v${version}",
-        "assets": ["dist/*.zip"]
+        "releaseName": "v${version}"
     },
     "plugins": {
         "@release-it/conventional-changelog": {
