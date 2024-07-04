@@ -2231,6 +2231,7 @@ __metadata:
     "@babel/preset-typescript": ^7.24.7
     "@changesets/cli": ^2.27.7
     "@commitlint/config-conventional": ^17.0.2
+    "@eslint/compat": ^1.1.0
     "@evilmartians/lefthook": ^1.5.0
     "@react-native/eslint-config": ^0.74.85
     "@release-it/conventional-changelog": ^5.0.0
@@ -2295,6 +2296,13 @@ __metadata:
   version: 4.11.0
   resolution: "@eslint-community/regexpp@npm:4.11.0"
   checksum: 97d2fe46690b69417a551bd19a3dc53b6d9590d2295c43cc4c4e44e64131af541e2f4a44d5c12e87de990403654d3dae9d33600081f3a2f0386b368abc9111ec
+  languageName: node
+  linkType: hard
+
+"@eslint/compat@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@eslint/compat@npm:1.1.0"
+  checksum: 79c495145e8dbbd9596344cc939b7d35e799938da0ef165bc031e718373f718dab4b9a9039b234fbb50fc3a65999b0a4b8a258fe85d41058df2d0bfdde6accaf
   languageName: node
   linkType: hard
 
