@@ -1,16 +1,11 @@
 {
     "$schema": "https://unpkg.com/release-it@17/schema/release-it.json",
     "git": {
-        "requireBranch": "feature/realse-action",
         "commitMessage": "chore: release ${version}",
         "tagName": "${version}"
     },
-    "hooks": {
-        "before:init": ["git pull", "yarn lint", "yarn typecheck", "yarn test"]
-    },
     "github": {
-        "release": true,
-        "releaseNotes": "generate-release-notes.sh --from=${latestTag} --to=${tagName}"
+        "release": true
     },
     "plugins": {
         "@release-it/conventional-changelog": {
