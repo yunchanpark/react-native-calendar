@@ -1,7 +1,7 @@
+import { LocaleConfig, WeekCalendar, type MarkedDates } from '@crawl-lab/react-native-calendar';
 import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-import { LocaleConfig, WeekCalendar, type MarkedDates } from 'react-native-calendar';
 
 type Locale = 'ko' | 'en';
 
