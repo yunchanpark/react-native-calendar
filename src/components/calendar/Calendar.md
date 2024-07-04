@@ -6,18 +6,27 @@
 ### Usage
 
 ```tsx
+import { Calendar, LocaleConfig, type MarkedDates } from '@crawl-lab/react-native-calendar';
 import dayjs from 'dayjs';
-import { StyleSheet, View } from 'react-native';
-import { Calendar, CalendarProvider } from 'react-native-calendar';
+import { useRef, useState } from 'react';
+import { Button, StyleSheet, View } from 'react-native';
 
 const MARKED_DATES = {
-    '2024-01-12': { marked: true },
-    '2024-01-15': { marked: true },
-    '2024-01-19': { marked: true },
-    '2024-01-23': { marked: true },
-    '2024-01-29': { marked: true },
-    '2024-01-30': { marked: true },
-    '2024-01-31': { marked: true },
+    '2024-07-12': { marked: true },
+    '2024-07-15': { marked: true },
+    '2024-07-19': { marked: true },
+    '2024-07-23': { marked: true },
+    '2024-07-29': { marked: true },
+    '2024-07-30': { marked: true },
+    '2024-07-31': {
+        marked: true,
+        markingStyle: {
+            backgroundColor: '#000000',
+        },
+        dotStyle: {
+            backgroundColor: '#000000',
+        },
+    },
 };
 
 // Monthly calendar page
