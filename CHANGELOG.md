@@ -1,5 +1,7 @@
 
 
+## [1.1.1](https://github.com/yunchanpark/react-native-calendar/compare/1.1.0...1.1.1) (2024-07-04)
+
 # [1.1.0](https://github.com/yunchanpark/react-native-calendar/compare/1.0.0...1.1.0) (2024-07-04)
 
 
