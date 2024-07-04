@@ -1,6 +1,6 @@
 {
     "name": "@crawl-lab/react-native-calendar",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "📆 A highly customizable React Native calendar library offering a user-friendly UI and smooth animations. ",
     "main": "lib/commonjs/index",
     "module": "lib/module/index",
