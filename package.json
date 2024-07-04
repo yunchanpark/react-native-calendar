@@ -1,5 +1,5 @@
 {
-    "name": "react-native-calendar",
+    "name": "@crawl-lab/react-native-calendar",
     "version": "0.1.0",
     "description": "A highly customizable React Native calendar library offering a user-friendly UI and smooth animations.",
     "main": "lib/commonjs/index",
@@ -44,14 +44,14 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ReptalieRegion/react-native-calendar.git"
+        "url": "git+https://github.com/yunchanpark/react-native-calendar.git"
     },
     "author": "yunchanpark <yongp99@nate.com> (https://github.com/yunchanpark)",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/ReptalieRegion/react-native-calendar/issues"
+        "url": "https://github.com/yunchanpark/react-native-calendar/issues"
     },
-    "homepage": "https://github.com/ReptalieRegion/react-native-calendar#readme",
+    "homepage": "https://github.com/yunchanpark/react-native-calendar#readme",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -61,7 +61,7 @@
         "dayjs": "^1.11.11",
         "lodash.debounce": "^4.0.8",
         "react-native-gesture-handler": "^2.17.1",
-        "react-native-reanimated": "3.12.1"
+        "react-native-reanimated": "3.10.1"
     },
     "devDependencies": {
         "@babel/plugin-proposal-class-properties": "^7.18.6",
@@ -124,7 +124,8 @@
             "tagName": "v${version}"
         },
         "npm": {
-            "publish": true
+            "publish": true,
+            "publishPath": "lib"
         },
         "github": {
             "release": true
